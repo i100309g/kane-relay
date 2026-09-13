@@ -1,0 +1,16 @@
+{
+  "name": "kane-no-tenki-yohou-relay",
+  "version": "1.0.0",
+  "private": true,
+  "description": "「カネの天気予報」Virtual Twin チャット用リレーサーバー（Anthropic API プロキシ）",
+  "main": "relay-server.js",
+  "scripts": {
+    "start": "node relay-server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
