@@ -29,7 +29,7 @@ const PORT = process.env.PORT || 8787;
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || "";
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "";
 const APP_SHARED_SECRET = process.env.APP_SHARED_SECRET || "";
-const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL || "claude-3-5-haiku-20241022";
+const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL || "claude-haiku-4-5-20251001";
 
 /* =====================================================================
    0. 安全なロガー
@@ -310,6 +310,8 @@ app.post("/api/quote", requireSharedSecret, express.json(), (req, res) => {
 /* =====================================================================
    6. ヘルスチェック & 起動
 ===================================================================== */
+app.get("/robots.txt", (req, res) => res.type("text/plain").send("User-agent: *\nAllow: /api/health\nDisallow: /\n"));
+
 app.get("/api/health", (req, res) => {
   res.json({ ok: true, aiConfigured: !!ANTHROPIC_API_KEY });
 });
